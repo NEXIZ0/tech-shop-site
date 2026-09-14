@@ -1,0 +1,11 @@
+# Apache Rewrite Configuration for TechStore API
+RewriteEngine On
+RewriteBase /
+
+# Rewrite all API requests to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/(.*)$ index.php?route=$1 [QSA,L]
+
+# 404 handling
+ErrorDocument 404 /api/not-found
